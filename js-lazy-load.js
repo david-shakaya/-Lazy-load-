@@ -173,3 +173,32 @@ const interObs = new IntersectionObserver((entries, observer) => {
 
  images.forEach(img => interObs.observe(img) ) // что бы добавить много картинок в observe используем forEach
 
+
+
+//  >>>>>>>>>>>>>>>>>>>>>>>>>>>>  МОЙ СОБСТВЕННЫЙ ПОИСК>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+const textRef = document.querySelectorAll('.list-toFind p');
+const inputFilterRef = document.querySelector('#filter-twoo');
+
+ inputFilterRef.addEventListener('input',_.debounce(returnValue, 500) )
+
+function returnValue (ev) {
+  // console.log()
+
+
+// console.log(textRef.)
+textRef.forEach(elem => {
+//  console.log(elem.textContent.includes('Убей')); 
+  if (elem.textContent.toLowerCase().includes(ev.target.value.toLowerCase())) {
+    // console.log(elem.textContent); 
+    elem.classList.add('active-elem')
+  }
+  if (!elem.textContent.toLowerCase().includes(ev.target.value.toLowerCase())) {
+    elem.classList.remove('active-elem')
+  }
+  if (ev.target.value === '') {
+     elem.classList.remove('active-elem')
+  }
+})
+
+}

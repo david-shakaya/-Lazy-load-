@@ -42,3 +42,12 @@ img {
   align-items: center;
   font-size: 50px;
 }
+
+.list-toFind > li {
+  display: inline;
+}
+
+li .active-elem {
+  background-color: rgb(194, 133, 133);
+  display: inline;
+}
