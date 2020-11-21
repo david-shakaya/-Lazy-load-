@@ -142,4 +142,34 @@ const io = new IntersectionObserver(onEntry, options)   // Ключевой мо
 io.observe(boxRef)   // Благодаря такому методу вешаем на ДИВ слежку
 
 // Также добавляем полифил с сайта https://polyfill.io/v3/url-builder/
-// Полифил помагает старым браузерам поддерживать этот код
+// Полифил помагает старым браузерам читать этот код.
+
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                                                  //  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                                  // ---  ЛЕНИВАЯ ЗАГРУЗКА ИЗОБРАЖЕНИЙ
+
+
+                                
+const images = document.querySelectorAll('.feed  img');
+
+const option = {
+  rootMargin: '100px'
+}
+
+const interObs = new IntersectionObserver((entries, observer) => {
+  console.log('hfo');
+  entries.forEach(entry => {
+   
+    if(entry.isIntersecting){
+       entry.target.classList.add('appear')
+      observer.unobserve(entry.target)     // Снимаем слежку после загрузки  картинки
+      }
+  })
+}, option)
+
+ images.forEach(img => interObs.observe(img) ) // что бы добавить много картинок в observe используем forEach
+
